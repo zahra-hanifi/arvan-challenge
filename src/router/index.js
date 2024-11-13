@@ -4,7 +4,7 @@ const index = [
   {
     path: '/',
     name: 'IndexPage',
-    component: import('../pages/index.vue'),
+    component: () => import('../pages/index.vue'),
   },
 ]
 
