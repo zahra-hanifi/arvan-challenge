@@ -6,6 +6,15 @@ const index = [
     name: 'IndexPage',
     component: () => import('../pages/index.vue'),
   },
+  {
+    path: '/auth/register',
+    name: 'RegisterPage',
+    component: () => import('../pages/auth/register.vue'),
+    meta: {
+      layout: 'empty',
+      title: 'Register'
+    }
+  }
 ]
 
 const router = createRouter({
