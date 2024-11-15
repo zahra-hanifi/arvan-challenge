@@ -1,8 +1,8 @@
 <script setup>
 import { mdiMenu } from '@mdi/js'
-import CIcon from './CIcon.vue'
+import CIcon from '../general/CIcon.vue'
 import MobileMenu from './MobileMenu.vue'
-import CBtn from './CBtn.vue'
+import CBtn from '../general/CBtn.vue'
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../../stores/auth.js'
@@ -25,7 +25,7 @@ function logout() {
 
 <template>
   <header
-    class="bg-grey-800 py-2.5 px-5 flex items-center justify-between text-white fixed to-0 left-0 right-0 max-h-[53px] sm:max-h-[unset]"
+    class="z-20 bg-grey-800 py-2.5 px-5 flex items-center justify-between text-white fixed to-0 left-0 right-0 max-h-[53px] sm:max-h-[64px]"
   >
     <div class="flex items-center gap-x-5">
       <span class="text-[22px]">Arvan Challenge</span>

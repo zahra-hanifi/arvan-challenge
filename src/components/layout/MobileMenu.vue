@@ -1,5 +1,5 @@
 <script setup>
-import CBtn from './CBtn.vue'
+import CBtn from '../general/CBtn.vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../../stores/auth.js'
 import { computed } from 'vue'
