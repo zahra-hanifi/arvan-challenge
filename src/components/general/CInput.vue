@@ -29,7 +29,7 @@
       class="text-xs flex justify-between"
       :class="{ 'min-h-[24px]': fixedBottomSpacing }"
     >
-      <div v-if="error" class="input-error-message text-error">
+      <div v-if="error" class="input-error-message text-red">
         {{ error }}
       </div>
 
@@ -167,9 +167,9 @@ export default {
       return [defaultClasses]
     },
     wrapperClasses() {
-      const defaultClasses = 'flex items-center gap-x-2 rounded-lg duration-150'
+      const defaultClasses = 'flex items-center gap-x-2 rounded duration-150'
       const colorClasses = 'bg-white'
-      const borderClasses = 'border border-solid border-transparent'
+      const borderClasses = 'border border-solid border-grey-400'
       const stateClasses = this.disabled ? '' : this.getStateClasses()
       const paddingClasses = this.multiline ? 'py-2 px-3' : 'p-1 px-3'
       const sizeClasses = this.multiline ? '' : 'h-[38px] sm:h-[40px]'
@@ -200,16 +200,11 @@ export default {
       ]
     },
     labelClasses() {
-      const defaultClasses = 'font-medium'
       const disabledClasses = 'text-grey-500'
       const colorClasses = 'text-grey-800'
-      const fontSizeClasses = 'text-xs sm:text-sm'
+      const fontSizeClasses = 'text-sm sm:text-base'
 
-      return [
-        defaultClasses,
-        this.disabled ? disabledClasses : colorClasses,
-        fontSizeClasses,
-      ]
+      return [this.disabled ? disabledClasses : colorClasses, fontSizeClasses]
     },
   },
   mounted() {
