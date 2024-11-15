@@ -1,25 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
-const index = [
-  {
-    path: '/',
-    name: 'IndexPage',
-    component: () => import('../pages/index.vue'),
-  },
-  {
-    path: '/auth/register',
-    name: 'RegisterPage',
-    component: () => import('../pages/auth/register.vue'),
-    meta: {
-      layout: 'empty',
-      title: 'Register'
-    }
-  }
-]
+import routes from './routes'
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: index,
+  routes: routes,
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.path.includes('auth')) {
+    if (!localStorage.getItem('token')) {
+      next()
+    } else {
+      next({ name: 'IndexPage' })
+    }
+  } else {
+    if (!localStorage.getItem('token')) {
+      next({ name: 'register' })
+    } else {
+      next()
+    }
+  }
 })
 
 export default router
