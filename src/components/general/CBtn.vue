@@ -41,7 +41,7 @@ export default {
       const disabledClasses =
         '!text-grey-400 !cursor-default !pointer-events-none border border-grey-100'
 
-      const fontSizeClasses = 'text-xs sm:text-base'
+      const fontSizeClasses = 'text-sm sm:text-base'
       const sizeClasses = 'min-h-[38px] sm:min-h-[40px]'
       const colorClasses = this.getColorClasses()
       const isTransparent = this.color === 'transparent'
