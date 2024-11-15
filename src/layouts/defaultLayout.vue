@@ -1,5 +1,5 @@
 <script setup>
-import Header from '../components/general/Header.vue'
+import Header from '../components/layout/Header.vue'
 import { getCurrentInstance, onMounted } from 'vue'
 import { useAuthStore } from '../stores/auth.js'
 
@@ -23,7 +23,7 @@ onMounted(() => {
   <div>
     <Header />
 
-    <main>
+    <main class="pt-[53px] sm:pt-[64px] overflow-x-hidden">
       <slot />
     </main>
   </div>
