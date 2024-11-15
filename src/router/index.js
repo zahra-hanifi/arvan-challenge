@@ -15,11 +15,11 @@ router.beforeEach((to, from, next) => {
     if (!localStorage.getItem('token')) {
       next()
     } else {
-      next({ name: 'IndexPage' })
+      next({ name: 'Articles' })
     }
   } else {
     if (!localStorage.getItem('token')) {
-      next({ name: 'login' })
+      next({ name: 'Login' })
     } else {
       next()
     }
