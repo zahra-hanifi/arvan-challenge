@@ -30,3 +30,16 @@ export function validate(validations, value, inputId) {
 
   return { status, error }
 }
+
+export function isNullOrUndefined(value) {
+  return value === undefined || value === null
+}
+
+export function hasValue(value) {
+  return !isNullOrUndefined(value) && !!value.length
+}
+
+export function isEmail(value) {
+  const reg = /^[a-zA-Z0-9._%-]+@\w+([.-]?\w+)*(\.\w{2,20})+$/
+  return reg.test(value)
+}
