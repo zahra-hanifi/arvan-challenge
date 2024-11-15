@@ -10,7 +10,7 @@ export default {
   props: {
     size: {
       type: [Number, String],
-      default: 32,
+      default: 20,
       validator(value) {
         return !isNaN(value)
       },
