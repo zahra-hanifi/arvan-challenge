@@ -1,9 +1,14 @@
 <script setup>
 import CBtn from './CBtn.vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '../../stores/auth.js'
+import { computed } from 'vue'
 
 const model = defineModel()
 const router = useRouter()
+const user = computed(() => {
+  return useAuthStore().user
+})
 
 function logout() {
   localStorage.removeItem('token')
@@ -19,7 +24,7 @@ function logout() {
     "
   >
     <!--todo Replace 'username' with the logged in username -->
-    <span class="text-lg font-medium">Welcome username</span>
+    <span class="text-lg font-medium">Welcome {{ user.username }}</span>
 
     <CBtn color="transparent" content-class="!text-dark-blue" @click="logout">
       Logout

@@ -3,11 +3,15 @@ import { mdiMenu } from '@mdi/js'
 import CIcon from './CIcon.vue'
 import MobileMenu from './MobileMenu.vue'
 import CBtn from './CBtn.vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '../../stores/auth.js'
 
 const isMobileMenuVisible = ref(false)
 const router = useRouter()
+const user = computed(() => {
+  return useAuthStore().user
+})
 
 function toggleMenuVisibility() {
   isMobileMenuVisible.value = !isMobileMenuVisible.value
@@ -26,8 +30,9 @@ function logout() {
     <div class="flex items-center gap-x-5">
       <span class="text-[22px]">Arvan Challenge</span>
 
-      <!--todo Replace 'username' with the logged in username -->
-      <span class="text-base hidden sm:block">Welcome username </span>
+      <span class="text-base hidden sm:block">
+        Welcome {{ user.username }}
+      </span>
     </div>
 
     <CBtn color="primary-outlined" class="hidden sm:block" @click="logout">
