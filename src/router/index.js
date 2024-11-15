@@ -15,7 +15,7 @@ router.beforeEach((to, from, next) => {
     }
   } else {
     if (!localStorage.getItem('token')) {
-      next({ name: 'register' })
+      next({ name: 'login' })
     } else {
       next()
     }
