@@ -23,7 +23,6 @@ function logout() {
       model ? 'translate-y-0 opacity-100 z-10' : '-translate-y-full opacity-0'
     "
   >
-    <!--todo Replace 'username' with the logged in username -->
     <span class="text-lg font-medium">Welcome {{ user.username }}</span>
 
     <CBtn color="transparent" content-class="!text-dark-blue" @click="logout">
