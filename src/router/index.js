@@ -7,7 +7,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title} | Arvan Challenge` || 'Arvan Challenge'
+  document.title = to.meta.title
+    ? `${to.meta.title} | Arvan Challenge`
+    : 'Arvan Challenge'
 
   if (to.path.includes('auth')) {
     if (!localStorage.getItem('token')) {
