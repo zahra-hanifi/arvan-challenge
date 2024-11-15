@@ -2,12 +2,20 @@
 import { mdiMenu } from '@mdi/js'
 import CIcon from './CIcon.vue'
 import MobileMenu from './MobileMenu.vue'
+import CBtn from './CBtn.vue'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const isMobileMenuVisible = ref(false)
+const router = useRouter()
 
 function toggleMenuVisibility() {
   isMobileMenuVisible.value = !isMobileMenuVisible.value
+}
+
+function logout() {
+  localStorage.removeItem('token')
+  router.push('/auth/login')
 }
 </script>
 
@@ -22,11 +30,9 @@ function toggleMenuVisibility() {
       <span class="text-base hidden sm:block">Welcome username </span>
     </div>
 
-    <button
-      class="px-[18px] py-2.5 rounded border border-[#5bc0de] text-[#5bc0de] text-base hidden sm:block"
-    >
+    <CBtn color="primary-outlined" class="hidden sm:block" @click="logout">
       Logout
-    </button>
+    </CBtn>
 
     <button class="sm:hidden" @click="toggleMenuVisibility">
       <CIcon :icon="mdiMenu" :size="32" />

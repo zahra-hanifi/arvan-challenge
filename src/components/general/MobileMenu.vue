@@ -1,5 +1,14 @@
 <script setup>
+import CBtn from './CBtn.vue'
+import { useRouter } from 'vue-router'
+
 const model = defineModel()
+const router = useRouter()
+
+function logout() {
+  localStorage.removeItem('token')
+  router.push('/auth/login')
+}
 </script>
 
 <template>
@@ -12,6 +21,8 @@ const model = defineModel()
     <!--todo Replace 'username' with the logged in username -->
     <span class="text-lg font-medium">Welcome username</span>
 
-    <button class="text-[#5bc0de] text-base">Logout</button>
+    <CBtn color="transparent" content-class="!text-dark-blue" @click="logout">
+      Logout
+    </CBtn>
   </div>
 </template>
