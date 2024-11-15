@@ -2,8 +2,10 @@
 import CInput from '../../components/general/CInput.vue'
 import CBtn from '../../components/general/CBtn.vue'
 import CForm from '../../components/general/CForm.vue'
-import { ref } from 'vue'
+import { ref, getCurrentInstance } from 'vue'
 import { hasValue, isEmail } from '../../utils/validations.js'
+import { useAuthStore } from '../../stores/auth.js'
+import { useRouter } from 'vue-router'
 
 const formData = ref({
   username: '',
@@ -36,10 +38,34 @@ const validations = ref({
   ],
 })
 const formRef = ref(null)
+const loading = ref(false)
+const { proxy } = getCurrentInstance()
+const axios = proxy.$axios
+const { setToken } = useAuthStore()
+const router = useRouter()
 
 async function register() {
   const formIsValid = await formRef.value?.validateAll()
   if (!formIsValid) return
+
+  loading.value = true
+  const user = {
+    user: formData.value,
+  }
+  await axios
+    .post('/users', user)
+    .then((response) => {
+      const user = response.data.user
+      localStorage.setItem('token', user.token)
+      setToken(user)
+      router.push('/')
+    })
+    .catch(() => {
+      // todo show error message after creating toast component
+    })
+    .finally(() => {
+      loading.value = false
+    })
 }
 </script>
 
@@ -72,7 +98,7 @@ async function register() {
       />
 
       <div class="flex flex-col gap-y-2">
-        <CBtn @click="register">Register</CBtn>
+        <CBtn :loading="loading" @click="register">Register</CBtn>
 
         <div class="text-base flex items-center gap-x-1 text-grey-800">
           Already Registered?
