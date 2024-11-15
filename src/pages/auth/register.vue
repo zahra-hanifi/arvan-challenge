@@ -44,7 +44,7 @@ async function register() {
 </script>
 
 <template>
-  <div class="min-h-screen flex justify-center items-center">
+  <div class="min-h-screen flex justify-center items-center p-4">
     <CForm
       ref="formRef"
       class="p-5 bg-grey-300 rounded flex flex-col gap-y-5 w-full sm:max-w-[450px]"
